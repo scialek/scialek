@@ -15,7 +15,8 @@ def main():
     # Identify numeric columns
     num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
 
-    # Binary flag(s) we leave untouched (avoid turning 0/1 into z-scores)
+    # Only the binary 'precipitationFlag' column is left untouched to avoid
+    # turning 0/1 values into z-scores
     binary_cols = [
         col for col in num_cols
         if set(df[col].unique()).issubset({0, 1}) and col == "precipitationFlag"
